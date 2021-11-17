@@ -177,6 +177,26 @@ SpatialRange* sr_intersect(const SpatialRange& a, const SpatialRange& b, bool co
 	return result;
 }
 
+std::list<STARE_ENCODE>* mergeList(STARE_SpatialIntervals a, STARE_SpatialIntervals b) {
+//STARE_SpatialIntervals mergeList(STARE_SpatialIntervals a, STARE_SpatialIntervals b) {
+	SpatialRange *temp = new SpatialRange(a);
+	temp->tree->addListSTAREID(b);
+	std::list<STARE_ENCODE> *result = new std::list<STARE_ENCODE> ();
+	temp->tree->getAllLeaves(temp->tree->root, result);
+	delete temp;
+	return result;
+	//STARE_SpatialIntervals res;
+	//if(tree->getAllLeaves(tree->root, result)){
+	//	std::list<STARE_ENCODE>::iterator it;
+	//	for(it = result->begin(); it != result->end(); it++){
+	//		res.push_back(*it);
+	//	}
+	//	result->clear();
+	//	delete result;
+	//}
+	//return res;
+}
+
 std::list<list<STARE_ENCODE>>* SpatialRange::leftJoin(SpatialRange* sp){
 	return tree->leftJoin(sp->tree->root);
 }

@@ -167,6 +167,21 @@ void HTMSubTree::addSTAREID(STARE_ENCODE key){
     return;
 }
 
+bool HTMSubTree::addListSTAREID(STARE_SpatialIntervals sids){
+    if(!sids.empty()){
+        multipleResolution = true;
+        int size = sids.size();
+        STARE_ENCODE curSID = 0;
+        root->isLeaf = false;//start to insert
+        for (int i = 0; i < size; i++){
+            curSID = sids[i];
+            addSTAREID(curSID);
+        }
+    }
+    else{
+        std::cout << "Input Error: The list of STARE values is empty!";
+    }
+}
 void HTMSubTree::tryGroupLeaves(HTMSubTreeNode* curNode, std::list<HTMSubTreeNode*> *path){
     if (curNode == NULL){
         std::cout << "Input Error (tryGroupLeaves): The curNode is NULL!";
@@ -417,6 +432,7 @@ bool HTMSubTree::rec_isIntersect(HTMSubTreeNode* sub_root, STARE_ArrayIndexSpati
         }
     }
 }
+
 
 //Check if STARE_ID_b is intersected with STARE_ID_a
 bool HTMSubTree::check_Intersect(STARE_ENCODE key_a, STARE_ENCODE key_b){

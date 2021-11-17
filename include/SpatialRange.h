@@ -112,6 +112,7 @@ public:
 	  }
 	}
 };
+std::list<STARE_ENCODE>* mergeList(STARE_SpatialIntervals a, STARE_SpatialIntervals b);
 
 SpatialRange* sr_intersect(const SpatialRange& a, const SpatialRange& b, bool compress = false, bool isGroupLeaves=true);
 

@@ -42,6 +42,9 @@ public:
     bool isIntersect(HTMSubTreeNode* Ins_root); // return if there is any overlapping
     bool isContain(STARE_ArrayIndexSpatialValue siv); //return if siv is contained in HTMSubTree
     bool isIntersect(STARE_ArrayIndexSpatialValue siv);
+
+    //std::list<STARE_ENCODE>* mergeLists(STARE_SpatialIntervals sids_a, STARE_SpatialIntervals sids_b);
+    //STARE_SpatialIntervals mergeLists(STARE_SpatialIntervals sids_a, STARE_SpatialIntervals sids_b);
     
     std::list<list<STARE_ENCODE>>* leftJoin(HTMSubTreeNode* Ins_root);
     std::list<list<STARE_ENCODE>>* innerJoin(HTMSubTreeNode* Ins_root);
@@ -58,6 +61,7 @@ public:
 
 //protected:
     void                addSTAREID(STARE_ENCODE key);
+    bool                addListSTAREID(STARE_SpatialIntervals sids);
     int                 getAllLeaves(HTMSubTreeNode * sub_root, std::list<list<STARE_ENCODE>>* result);
     int                 getAllLeaves(HTMSubTreeNode * sub_root, std::list<STARE_ENCODE>* result);
     
