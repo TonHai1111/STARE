@@ -107,6 +107,7 @@ void HTMSubTree_test_isIntersect();
 void HTMSubTree_test_leftJoin();
 void HTMSubTree_test_innerJoin();
 void HTMSubTree_test_fullJoin();
+void HTMSubTree_test_mergeList();
 /* ========== <Timer class> =========== */
 class timer
 {

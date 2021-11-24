@@ -162,6 +162,14 @@ STARE_SpatialIntervals SpatialRange::toSpatialIntervals() {
  * Odd. The following does not seem to work if we just return the SpatialRange itself. Some of the pointers seem to be either corrupted or eliminated.
  */
 // SpatialRange sr_intersect(const SpatialRange&a, const SpatialRange& b, bool compress) {
+SpatialRange* sr_intersect(const SpatialRange& a, const SpatialRange& b) {
+	std::list<STARE_ENCODE> *temp = a.tree->intersect(b.tree->root);
+	SpatialRange *result = new SpatialRange(temp);
+	temp->clear();
+	delete temp;
+	return result;
+}
+
 SpatialRange* sr_intersect(const SpatialRange& a, const SpatialRange& b, bool compress) {
 	std::list<STARE_ENCODE> *temp = a.tree->intersect(b.tree->root);
 	SpatialRange *result = new SpatialRange(temp);

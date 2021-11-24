@@ -4294,9 +4294,10 @@ void runSuite(int argc, char const *argv[]){
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<>  > lis(xmlfile.out);
 	cute::suite s;
+  s.push_back(CUTE(HTMSubTree_test_mergeList));
   //s.push_back(CUTE(HTMSubTree_test_leftJoin));
   //s.push_back(CUTE(HTMSubTree_test_innerJoin));
-  s.push_back(CUTE(HTMSubTree_test_fullJoin));
+  //s.push_back(CUTE(HTMSubTree_test_fullJoin));
   //s.push_back(CUTE(HTMSubTree_test_getAllLeaves));
   //s.push_back(CUTE(HTMSubTree_test_isContain));
   //s.push_back(CUTE(HTMSubTree_vs_SpatialRange_Create_small));
@@ -4311,6 +4312,7 @@ void runSuite(int argc, char const *argv[]){
   //s.push_back(CUTE(HTMSubTree_vs_SpatialRange_Intersect_VNP03DNB_1));
   //s.push_back(CUTE(HTMSubTree_vs_SpatialRange_Intersect_small_verify));
   //s.push_back(CUTE(HTMSubTree_vs_SpatialRange_Intersect_MOD05_2_verify));
+  /*
 	s.push_back(CUTE(precisionTest));
 	s.push_back(CUTE(lookupID));
 	s.push_back(CUTE(pointById));
@@ -4377,7 +4379,7 @@ void runSuite(int argc, char const *argv[]){
     s.push_back(CUTE(SpatioTemporalUsage_test));
 
 	//	s.push_back(CUTE(testRange));
-
+*/
 	if(false) { // Lots of diagnostic output in the following.
 		s.push_back(CUTE(testRange));
 		s.push_back(CUTE(testIndexLevel));

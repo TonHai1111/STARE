@@ -91,6 +91,12 @@ HTMSubTree::HTMSubTree(std::list<STARE_ENCODE> * sids, bool _isGroupLeaves){
 void HTMSubTree::addSTAREID(STARE_ENCODE key){
     HTMSubTreeNode* curNode = root;
     STARE_ENCODE level = key & 0x000000000000001f;
+    if(level > 27 || level < 0){
+        std::cout << level << std::endl;
+        std::cout << "Warning: Stare level is out of range. Adjust to 27!";
+        level = 27;
+        //return;
+    }
     STARE_ENCODE curCode = 0;
     std::list<HTMSubTreeNode*> *path = new std::list<HTMSubTreeNode*>();
     //path->push_back(curNode); // we don't group leaves in the level 0
@@ -171,15 +177,21 @@ bool HTMSubTree::addListSTAREID(STARE_SpatialIntervals sids){
     if(!sids.empty()){
         multipleResolution = true;
         int size = sids.size();
+        //std::cout << std::hex <<"addListSTAREID: " << size << std::endl;
+        //for (int i = 0; i <size; i++){
+        //    std::cout << sids[i] << std::endl;
+        //}
         STARE_ENCODE curSID = 0;
         root->isLeaf = false;//start to insert
         for (int i = 0; i < size; i++){
             curSID = sids[i];
             addSTAREID(curSID);
         }
+        return true;
     }
     else{
         std::cout << "Input Error: The list of STARE values is empty!";
+        return false;
     }
 }
 void HTMSubTree::tryGroupLeaves(HTMSubTreeNode* curNode, std::list<HTMSubTreeNode*> *path){

@@ -114,7 +114,11 @@ public:
 };
 std::list<STARE_ENCODE>* mergeList(STARE_SpatialIntervals a, STARE_SpatialIntervals b);
 
-SpatialRange* sr_intersect(const SpatialRange& a, const SpatialRange& b, bool compress = false, bool isGroupLeaves=true);
+SpatialRange* sr_intersect(const SpatialRange& a, const SpatialRange& b); 
+
+SpatialRange* sr_intersect(const SpatialRange& a, const SpatialRange& b, bool compress);
+
+SpatialRange* sr_intersect(const SpatialRange& a, const SpatialRange& b, bool compress, bool isGroupLeaves);
 
 inline SpatialRange* operator& ( const SpatialRange& a,  const SpatialRange& b) {
 	return sr_intersect(a,b);
